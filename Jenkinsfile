@@ -46,34 +46,42 @@ pipeline{
         }
         success {
             mail to: 'kaushalhirani99@gmail.com',
-                subject: "Jenkins Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                smtpHost: 'smtp.gmail.com',
-                smtpPort: '465', 
-                charset: 'UTF-8'
-                body: """
-                Good news! The Jenkins pipeline has successfully completed.
-                - Job Name: ${env.JOB_NAME}
-                - Build Number: ${env.BUILD_NUMBER}
-                - Build URL: ${env.BUILD_URL}
+            subject: "Jenkins Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: """
+            Good news! The Jenkins pipeline has successfully completed.
+            - Job Name: ${env.JOB_NAME}
+            - Build Number: ${env.BUILD_NUMBER}
+            - Build URL: ${env.BUILD_URL}
 
-                Please check the Jenkins dashboard for more details.
-                """
+            Please check the Jenkins dashboard for more details.
+            """,
+            smtpHost: 'smtp.gmail.com',
+            smtpPort: '465',
+            from: 'kaushalhirani99@gmail.com', // Replace with your Gmail address
+            replyTo: 'kaushalhirani99@gmail.com',
+            username: 'kaushalhirani99@gmail.com', // Gmail username
+            password: 'ntzd pyit jync zuzx', // App Password, not your Gmail password
+            useSsl: true // SSL required for port 465
         }
         failure {
             mail to: 'kaushalhirani99@gmail.com',
-                subject: "Jenkins Build Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                smtpHost: 'smtp.gmail.com',
-                smtpPort: '465', 
-                charset: 'UTF-8'
-                body: """
-                Unfortunately, the Jenkins pipeline failed.
+            subject: "Jenkins Build Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: """
+            Unfortunately, the Jenkins pipeline failed.
 
-                - Job Name: ${env.JOB_NAME}
-                - Build Number: ${env.BUILD_NUMBER}
-                - Build URL: ${env.BUILD_URL}
+            - Job Name: ${env.JOB_NAME}
+            - Build Number: ${env.BUILD_NUMBER}
+            - Build URL: ${env.BUILD_URL}
 
-                Please check the console logs for error details.
-                """
+            Please check the console logs for error details.
+            """,
+            smtpHost: 'smtp.gmail.com',
+            smtpPort: '465',
+            from: 'kaushalhirani99@gmail.com', // Replace with your Gmail address
+            replyTo: 'kaushalhirani99@gmail.com',
+            username: 'kaushalhirani99@gmail.com', // Gmail username
+            password: 'ntzd pyit jync zuzx', // App Password, not your Gmail password
+            useSsl: true // SSL required for port 465
         }
-    }
+    }         
 }
