@@ -53,9 +53,9 @@ pipeline {
                 - Job Name: ${env.JOB_NAME}
                 - Build Number: ${env.BUILD_NUMBER}
                 - Build URL: ${env.BUILD_URL}
-
                 Please check the Jenkins dashboard for more details.
                 """
+                retry: 5
             )
         }
         failure {
@@ -71,6 +71,7 @@ pipeline {
 
                 Please check the console logs for error details.
                 """
+                retry: 5
             )
         }
     }
