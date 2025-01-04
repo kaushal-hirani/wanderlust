@@ -47,9 +47,11 @@ pipeline{
         success {
             mail to: 'kaushalhirani99@gmail.com',
                 subject: "Jenkins Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                smtpHost: 'smtp.gmail.com',
+                smtpPort: '465', 
+                charset: 'UTF-8'
                 body: """
                 Good news! The Jenkins pipeline has successfully completed.
-
                 - Job Name: ${env.JOB_NAME}
                 - Build Number: ${env.BUILD_NUMBER}
                 - Build URL: ${env.BUILD_URL}
@@ -60,6 +62,9 @@ pipeline{
         failure {
             mail to: 'kaushalhirani99@gmail.com',
                 subject: "Jenkins Build Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                smtpHost: 'smtp.gmail.com',
+                smtpPort: '465', 
+                charset: 'UTF-8'
                 body: """
                 Unfortunately, the Jenkins pipeline failed.
 
