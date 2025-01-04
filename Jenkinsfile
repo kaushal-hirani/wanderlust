@@ -48,6 +48,7 @@ pipeline {
             emailext(
                 to: 'kaushalhirani99@gmail.com',
                 subject: "Jenkins Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                retry: 5,
                 body: """
                 Good news! The Jenkins pipeline has successfully completed.
                 - Job Name: ${env.JOB_NAME}
@@ -55,13 +56,14 @@ pipeline {
                 - Build URL: ${env.BUILD_URL}
                 Please check the Jenkins dashboard for more details.
                 """
-                retry: 5
             )
+
         }
         failure {
             emailext(
                 to: 'kaushalhirani99@gmail.com',
                 subject: "Jenkins Build Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                retry: 5,
                 body: """
                 Unfortunately, the Jenkins pipeline failed.
 
@@ -71,7 +73,6 @@ pipeline {
 
                 Please check the console logs for error details.
                 """
-                retry: 5
             )
         }
     }
