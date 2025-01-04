@@ -54,8 +54,7 @@ pipeline {
                 - Build Number: ${env.BUILD_NUMBER}
                 - Build URL: ${env.BUILD_URL}
                 Please check the Jenkins dashboard for more details.
-                """,
-                retry: 5
+                """
             )
 
         }
@@ -71,8 +70,7 @@ pipeline {
                 - Build URL: ${env.BUILD_URL}
 
                 Please check the console logs for error details.
-                """,
-                retry: 5
+                """
             )
         }
     }
