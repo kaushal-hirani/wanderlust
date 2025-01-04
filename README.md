@@ -124,7 +124,7 @@ _I'd love for you to make the most of this project - it's all about learning, he
 
 ## 🌟 Ready to Contribute?
 
-Kindly go through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlust/blob/main/.github/CONTRIBUTING.md) to understand everything from setup to contributing guidelines.
+Kindly go  through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlust/blob/main/.github/CONTRIBUTING.md) to understand everything from setup to contributing guidelines.
 
 ## 💖 Show Your Support
 
