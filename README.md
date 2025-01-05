@@ -10,17 +10,47 @@ The goal of this project is to create a Jenkins CI/CD pipeline that integrates v
   <img width="1680" alt="image" src="https://github.com/user-attachments/assets/4512339d-37fb-4ba6-845f-810c26760eff" />
 
 - Installed Jenkins and Docker on the server.
+  Docker : 
+  ```
+  sudo apt-get update
+  sudo apt-get install docker.io -y
+  sudo usermod -aG docker ubuntu && newgrp docker
+  ```
+  Jenkins: 
+  ```
+  sudo apt update -y
+  sudo apt install fontconfig openjdk-17-jre -y
+  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+  sudo apt-get update -y
+  sudo apt-get install jenkins -y
+  ```
+  
   <img width="1677" alt="image" src="https://github.com/user-attachments/assets/aafb684a-c87e-4926-b9c8-610098d4576b" />
 
 ### 2. Tool Installation
 - Installed Trivy for security vulnerability scanning.
+  ```
+  sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+  wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+  echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+  sudo apt-get update -y
+  sudo apt-get install trivy -y
+  ```
   
 - Installed Docker for running the SonarQube container.
+
   <img width="1679" alt="image" src="https://github.com/user-attachments/assets/0df3c181-5cfb-40df-b5ed-90b74c21cd71" />
 
 
 ### 3. SonarQube Setup
 - Ran the SonarQube container using Docker.
+  ```
+  docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
+  ```
 - Connected Jenkins to SonarQube using a token and configured access under `Manage Jenkins`.
 <img width="1624" alt="image" src="https://github.com/user-attachments/assets/637c8bc6-4981-4d2c-98bd-4b7e5ba98c2f" />
 <img width="1654" alt="image" src="https://github.com/user-attachments/assets/fbc51f6e-748d-428b-8ed2-c8b165d525a6" />
